@@ -1,20 +1,20 @@
 const { Router } = require('express');
 const router = Router();
 
-const users = []
+const users = [];
 
-router.post('/user/login', (req, res) => {
+router.post('/login', (req, res) => {
     const user = req.body;
-    if(!user){
+    if (!user) {
         res.status(404);
     }
     res.status(200);
 })
 
-router.post('/user/register', (req, res) => {
+router.post('/register', (req, res) => {
     const user = req.body;
     users.push(user);
-    res.status(201);
+    res.status(201).send('ok');
 })
 
 module.exports = router;
