@@ -24,6 +24,27 @@ app.use('/packs', packs);
 /*selling routing */
 app.use('/selling', selling);
 
+/*compra paquetes*/
+app.get('/paquetes/compra/:id', (req, res) => {
+    const id = req.params.id
+    const paquete = paquetes.find(paquete => paquete.id == id);
+    if (paquete == undefined) {
+        res.statusCode = 404;
+        res.json({ mensaje: "Paquete no disponible" })
+    } else {
+        res.json(paquete)
+    }
+});
+
+
+/*selling routes */
+app.get('/ventas', (req, res) => {
+    res.status(200).send('ok');
+})
+app.get('/ventas/:id', (req, res) => {
+    res.status(200).send('ok');
+})
+
 
 
 
