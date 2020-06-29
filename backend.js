@@ -12,11 +12,6 @@ const port = 3000;
 /*body-parser */
 app.use(bodyParser.json());
 
-/*If somthing is not found run the middlewaer */
-function notFound(req,res,next){
-    
-}
-
 
 /*users routing*/
 app.use('/user', user);
@@ -38,18 +33,6 @@ app.get('/paquetes/compra/:id', (req, res) => {
         res.json(paquete)
     }
 });
-
-
-/*selling routes */
-app.get('/ventas', (req, res) => {
-    res.status(200).send('ok');
-})
-app.get('/ventas/:id', (req, res) => {
-    res.status(200).send('ok');
-})
-
-
-
 
 /*Error handling*/
 app.use((err, req, res, next) => {

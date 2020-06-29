@@ -1,14 +1,34 @@
 const { Router } = require('express');
 const router = Router();
 
-const users = [];
+const users = [
+    {
+        id: 1,
+        username: "Gabriel123",
+        password: "asd123"
+    }
+];
 
-router.post('/login', (req, res) => {
+
+/* Verificar si es usuario registrado*/
+
+function isUser(req, res, next){
+    const {username, password} = req.body;
+    const userFound = users.find(user => user.username == username && user.password == password);
+    if(!userFound){
+        res.status(404).send("Anda a registrarte uachin ")
+        // res.redirect('./register');
+    }
+    next()
+}
+
+router.post('/login', isUser,(req, res) => {
     const user = req.body;
     if (!user) {
         res.status(404);
     }
-    res.status(200);
+    res.status(200)
+    res.redirect('../packs');
 })
 
 router.post('/register', (req, res) => {
