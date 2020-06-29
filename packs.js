@@ -39,17 +39,28 @@ const packs = [{
     }
 ];
 
+
+
+
+
+
 /*tourist packs */
 router.get('/', (req, res) => {
     res.status(200).send(packs);
 })
 
-router.post('/sendpacks', (req, res) => {
+router.post('/register_packs', (req, res) => {
 
     const pack = req.body;
     packs.push(pack);
     res.status(200).send("added");
 })
 
+router.get('/:id',(req,res)=>{
+    const id = req.params.id;
+    const packFound = packs.find(pack => pack.id == id);
+
+    res.status(200).send(packFound);
+})
 
 module.exports = router;

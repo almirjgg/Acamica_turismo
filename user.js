@@ -15,6 +15,10 @@ router.post('/register', (req, res) => {
     const user = req.body;
     users.push(user);
     res.status(201).send('ok');
+}) 
+
+router.get('/',(req,res)=>{
+    res.status(201).send(users);
 })
 
 module.exports = router;

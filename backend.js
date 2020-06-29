@@ -12,7 +12,10 @@ const port = 3000;
 /*body-parser */
 app.use(bodyParser.json());
 
-
+/*If somthing is not found run the middlewaer */
+function notFound(req,res,next){
+    
+}
 
 
 /*users routing*/
