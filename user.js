@@ -14,19 +14,16 @@ const users = [
 
 function isUser(req, res, next){
     const {username, password} = req.body;
+    console.log(req.body);
     const userFound = users.find(user => user.username == username && user.password == password);
     if(!userFound){
         res.status(404).send("Anda a registrarte uachin ")
-        // res.redirect('./register');
+        // res.redirect('./register'); <-- Funciona pero la ruta creada es un POST
     }
-    next()
+    next();
 }
 
 router.post('/login', isUser,(req, res) => {
-    const user = req.body;
-    if (!user) {
-        res.status(404);
-    }
     res.status(200)
     res.redirect('../packs');
 })

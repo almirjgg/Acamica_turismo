@@ -2,6 +2,7 @@
 const user = require('./user');
 const packs = require('./packs');
 const selling = require('./selling');
+const cors = require('cors');
 
 /*express config */
 const express = require('express');
@@ -12,6 +13,7 @@ const port = 3000;
 /*body-parser */
 app.use(bodyParser.json());
 
+app.use(cors());
 
 /*users routing*/
 app.use('/user', user);
